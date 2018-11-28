@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+{% block content %}
+	<div class="separate-pages">
+		{% for car in cars %}
+	    <div class="container post-distance">
+			<article class="media content-section">
+			  <img class="rounded-circle article-img" src="">
+			  <div class="media-body">
+			    <div class="article-metadata">
+			      <a class="mr-2" href="#">{{ car.posted_by }}</a>
+				  <small class="text-muted">{{ car.date_posted|date:"F d, Y" }}</small>
+			    </div>
+			    <h2><small class="text-muted">Company: </small><a class="article-title" href="{% url 'blog-cars' %}">{{ car.company_name }}</a></h2>
+			    <h4 class="article-content"><small class="text-muted">Model &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </small>{{ car.model_name }}</h4>
+				<h6 class="article-content"><small class="text-muted">Launching Year &nbsp;&nbsp; : </small>{{ car.launched_date }}</h6>
+			  </div>
+			</article>
+	    </div>
+		{% endfor %}
+	</div>
+{% endblock content %}
