@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% block content %}
+	<div class="separate-pages">
+	    <div class="container post-distance">
+			<article class="media content-section">
+			  <img class="rounded-circle article-img" src="" height="200px" width="200px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  <div class="media-body">
+			    <div class="article-metadata">
+			      <h3 class="mr-2">{{ object.posted_by }}</h3>
+				  <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+			    </div>
+			    <h2><small class="text-muted">Company: </small><span class="article-title">{{ object.company_name }}</span></h2>
+			    <h4 class="article-content"><small class="text-muted">Model &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </small>{{ object.model_name }}</h4>
+				<h6 class="article-content"><small class="text-muted">Launching Year &nbsp;&nbsp; : </small>{{ object.launched_date }}</h6>
+			  </div>
+			</article>
+	    </div>
+	</div>
+{% endblock content %}

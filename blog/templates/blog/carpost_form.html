@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="separate-pages">
+
+		<div class="container"> 
+			<div class="row">
+				<div class="col-xs-3 col-sm-3 col-md-3">
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 regiform">
+					<form method="post" action = "">
+						<center><legend>Update Account</legend></center>
+						{% csrf_token %}
+						{{ form | crispy }}
+						<button type="submit" class="sub-button">Submit</button>
+					</form>
+				</div><!-- col -->
+				<div class="col-xs-3 col-sm-3 col-md-3"> 		
+				</div><!-- col -->
+			</div><!-- row -->
+		</div><!-- container --> 
+	</div><!-- separate-pages -->
+{% endblock content %}
