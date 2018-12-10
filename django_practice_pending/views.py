@@ -10,6 +10,22 @@ from django.contrib.auth.models import User
 
 def home(request):
     return render(request, 'blog/home.html', {'title': 'Home'})
+def post(request):
+    
+    if request.method == 'POST':
+    	form = CarForm(request.POST)
+    	if form.is_valid():
+    		form.save()
+    		messages.success(request, f' Your content is posted!')
+    		return redirect('blog-cars')
+    else:
+    	form = CarForm()
+    
+    context = {
+    'cars': CarPost.objects.all(),
+    'form': form,
+    }
+    return render(request, 'blog/cars.html', context)
 
 class CarPostListView(ListView):
 	model = CarPost
@@ -24,9 +40,23 @@ class CarPostCreateView(CreateView):
 	model = CarPost
 	fields = ['company_name', 'model_name', 'image', 'launched_date']
 
-	def form_valid(self, form):
-		form.instance.posted_by = self.request.user
+	def form_valid(self):
+		form.instance.author = self.request.user
 		return super().form_valid(form)
+
+# class FormAndListView(CarPostCreateView, CarPostListView):
+
+	# context = {
+ #        'object_list': object_list
+ #    }
+	# def get(self, request, *args, **kwargs):
+	# 	object_list = CarPost.objects.all()
+	# 	formView = CarPostCreateView.get(self, request, *args, **kwargs)
+	# 	listView = CarPostListView.get(self, request, *args, **kwargs)
+	# 	formData = formView.context_data['form']
+	# 	listData = listView.context_data['cars']
+	# 	# listView.ordering
+	# 	return render(request, 'blog/cars.html', {'form' : formData, 'cars' : listData, 'object_list': object_list})
 
 
 def search(request):

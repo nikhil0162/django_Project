@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="separate-pages">
+		<form method="POST">
+		{% csrf_token %}
+		<input type="text" name="qname" value="{{ request.GET.qname}}" id="search-name">
+		</form>
+		<ul id="search-results">
+			
+
+		
+
+	{% if result.count > 0 %}
+
+		{% for result in results %}
+	    	<li><a href="{% url 'search-users' %}">{{result.username}}</a></li>
+		{% endfor %}
+
+	{% else %}
+		<li>None to Show!</li>
+	{% endif %}
+		</ul>
+	</div>
+
+{% endblock content %}
