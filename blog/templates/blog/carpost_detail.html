@@ -2,8 +2,13 @@
 {% block content %}
 	<div class="separate-pages">
 	    <div class="container post-distance">
+
 			<article class="media content-section">
-			  <img class="rounded-circle article-img" src="" height="200px" width="200px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  		<article class="media content-section">
+				{% if object.image %}
+				<img class="article-img " src="{{ object.image.url }}">
+				{% endif %}
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			  <div class="media-body">
 			    <div class="article-metadata">
 			      <h3 class="mr-2">{{ object.posted_by }}</h3>
@@ -12,8 +17,38 @@
 			    <h2><small class="text-muted">Company: </small><span class="article-title">{{ object.company_name }}</span></h2>
 			    <h4 class="article-content"><small class="text-muted">Model &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </small>{{ object.model_name }}</h4>
 				<h6 class="article-content"><small class="text-muted">Launching Year &nbsp;&nbsp; : </small>{{ object.launched_date }}</h6>
+				<br><br>
+				<span>Delete Post:</span>
+				<button type="button" class="btn btn-outline-danger btn-del" data-toggle="modal" data-target="#myModal">Delete</button>
 			  </div>
+			  <br>
 			</article>
 	    </div>
+<div class="container container-modal">
+  <!-- Modal -->
+  <div class="modal animated slideInDown" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+          	<span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+			<div class="container"><h3 class="text-muted">Are you sure? You want to delete this!!</h3></div>			
+			<div class="container col-offset-5 col-7">
+				<form action="{% url 'car_delete' object.pk %}" method="post">
+					{% csrf_token %}
+					<button type="submit" class="btn-sm btn-outline-danger btn-del">Delete</button>
+					<button type="button" class="btn sub-button" data-dismiss="modal">Cancel</button>
+				</form>
+			</div><!-- container -->
+      </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+  </div><!-- modal -->
+  
+</div>
+
+	    
 	</div>
 {% endblock content %}

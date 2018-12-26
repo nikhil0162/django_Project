@@ -1,15 +1,42 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, HttpResponse
 from .models import CarPost
 from django.contrib import messages
 from .forms import CarForm
-from django.views.generic import DetailView, ListView, CreateView
+from django.views.generic import DetailView, ListView, CreateView, DeleteView
 from django.db.models import Q
-from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-
+from django.urls import reverse_lazy
 
 def home(request):
     return render(request, 'blog/home.html', {'title': 'Home'})
+
+import json
+def apiJson(request):
+	emp={
+		'name': 'Ramanuj',
+		'age': 25,
+		'sal': 60000,
+		'city': 'Rohtak',
+	}
+	representation = f"Name {emp['name']},<br> age {emp['age']}, <br>sal {emp['sal']}, <br>city {emp['city']}"
+	rd = json.dumps(emp)
+	return HttpResponse(rd)
+
+class CarPostDetailView(DetailView):
+	model = CarPost
+
+
+class CarPostCreateView(CreateView):
+	form_class = CarForm
+	success_url = reverse_lazy('blog-cars')
+	template_name = 'blog/carpost_form.html'
+
+	def form_valid(self, form):
+		form.instance.posted_by = self.request.user
+		form.save()
+		return super(CarPostCreateView, self).form_valid(form)
+
 
 class CarPostListView(ListView):
 	model = CarPost
@@ -17,16 +44,11 @@ class CarPostListView(ListView):
 	ordering = ['-date_posted']
 	context_object_name = 'cars'
 
-class CarPostDetailView(DetailView):
-	model = CarPost
 
-class CarPostCreateView(CreateView):
+class CarPostDeleteView(DeleteView):
 	model = CarPost
-	fields = ['company_name', 'model_name', 'image', 'launched_date']
-
-	def form_valid(self, form):
-		form.instance.posted_by = self.request.user
-		return super().form_valid(form)
+	template_name = 'blog/car_detail.html'
+	success_url = reverse_lazy('blog-cars')
 
 
 def search(request):
@@ -39,17 +61,9 @@ def search(request):
 			if match:
 				return render(request, 'blog/cars.html', {'cars':match})
 			else:
-				return messages.error(request, "no result found!")
+				return HttpResponse("<h1>no result found!</h1>")
 		else:
 			return HttpResponseRedirect('/search_post/')
 	return render(request, 'blog/cars.html')
 
 
-def search_users(request):
-	if request.method == 'POST':
-		srch = request.POST.get('qname')
-	else:
-		srch = ''
-
-	result = User.objects.filter(Q(username__icontains=srch))
-	return render(request, 'blog/searching.html',{'results': result})
