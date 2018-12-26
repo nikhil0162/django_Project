@@ -305,11 +305,14 @@ footer {
 
 
 
-/* .article-img {
-  height: 65px;
-  width: 65px;
+ .article-img {
+  height: 200px;
+  width: 200px;
   margin-right: 16px;
-} */
+  border: 7px solid #ffffff;
+  box-shadow: 0px 0px 4px lightblue;
+  border-radius: 20px;
+} 
 
 .article-metadata {
   padding-bottom: 1px;
@@ -338,19 +341,25 @@ a.article-title:hover {
 }
 .post-distance{
     margin-top :50px;
-    background: #E0E0E0;
+    background: #fff;
     padding-top: 30px;
-    border-radius: 15px;
+    border-radius: 18px;
     padding-bottom: 30px;
+    box-shadow: 0px 0px 13px lightblue;
+}
+.post-distance:hover{
+  transition: 1s ease-out;
+ box-shadow: 0px 1px 35px lightblue; 
 }
 .content-section {
-  background: #E0E0E0;
+  background: #fff;
+  border: none;
   padding: 30px 40px;
-  border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
 }
 .sub-button{
+  box-shadow: 2px 2px 13px black;
     border: 2px solid #505454;
     height: 50px;
      padding: 10px;
@@ -361,6 +370,7 @@ a.article-title:hover {
      transition: 0.5s;
 }
 .sub-button:hover{
+  box-shadow: 2px 2px 33px black;
      background: #272828;
      color: #fff;
 }
@@ -423,6 +433,30 @@ a.article-title:hover {
     }
 
 }
-.profile-page{
-    /* margin-top: 100px; */
+input{
+    border-width:0px 0px 1px 0px;
+    /*border-bottom: 1px solid black;*/
+    /*box-shadow: 0px 0px 13px black;*/
+    border-radius: 6px;
+    height: 28px;
+}
+
+i{
+  color: #fff;
+}
+.social a:hover{
+  transition: 5s;
+    /* -webkit-transform: rotateX(360deg); */
+    -webkit-transform: rotateY(360deg);
+}
+.btn-del{
+  border: 2px solid red;
+  height: 50px;
+     padding: 10px;
+     width:100px;
+}
+.modal-content{
+  /*height:420px;
+  width: 500px;*/
+  background: #272828;
 }
