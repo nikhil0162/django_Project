@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     {% if title %}
       <title>Django-{{ title }}</title>
     {% else %}
@@ -57,12 +58,6 @@
                   <a class="nav-link js-scroll-trigger" href="{% url 'register' %}">Register</a>
                 </li>
               {% endif %}
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'weather_main' %}">Weather</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'todo-index' %}">ToDo</a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
               </li>
