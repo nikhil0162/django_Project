@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'epiclicks.apps.EpiclicksConfig',
     'todo.apps.TodoConfig',
     'weather.apps.WeatherConfig',
     'blog.apps.BlogConfig',
@@ -133,4 +134,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
-
