@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'schedular.apps.SchedularConfig',
     'todo.apps.TodoConfig',
     'weather.apps.WeatherConfig',
     'blog.apps.BlogConfig',
@@ -43,9 +44,33 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'datetimepicker',
+    'rest_framework',
+    'django_user_agents',
+    'tracking_analyzer',
+    'django_countries',
+    'django_bleach',
+    'ckeditor',
+    'ckeditor_uploader',
+    'bootstrap4',
+    'bootstrap_datepicker_plus',
+    'mixer',
 ]
+CKEDITOR_UPLOAD_PATH = 'desc_media/'
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'height': 400,
+        'width': 300,
+        'toolbar_Custom': [
+            ['Bold', 'Link','Image'],
+        ],
+    },
+}
 
 MIDDLEWARE = [
+    'django_user_agents.middleware.UserAgentMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,12 +150,43 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+# STATIC_ROOT = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_USE_TLS = True
+
+
+
+# TRACKING_ANALYZER_MAXMIND_URL='http://geolite.maxmind.com/download/geoip/database/'
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
+TRACKING_ANALYZER_MAXMIND_URL='/geoip/database/'
+TRACKING_ANALYZER_MAXMIND_COUNTRIES='GeoLite2-Country.mmdb.gz'
+TRACKING_ANALYZER_MAXMIND_CITIES='GeoLite2-City.mmdb.gz'
+GEOIP_COUNTRY='GeoLite2-Country.mmdb'
+GEOIP_CITY='GeoLite2-City.mmdb'
+
+
+# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+
+BLEACH_STRIP_TAGS=True
+BLEACH_ALLOWED_TAGS=[]
+BLEACH_ALLOWED_STYLES = []
+
+# from django.contrib import sessions
+# SESSION_COOKIE_SECURE=True

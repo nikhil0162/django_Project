@@ -6,7 +6,7 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        What's the weather like?
+                        <center>What's the weather like?</center>
                     </h1>
                 </div>
             </div>
@@ -19,10 +19,10 @@
                             {% csrf_token %}
                             <div class="field has-addons">
                                 <div class="control is-expanded">
-                                    {{ form.name }}
+                                    <span>Enter City: &nbsp; &nbsp;</span> {{ form.name }}
                                 </div>
                                 <div class="control">
-                                    <button type="submit" class="button is-info">
+                                    <button type="submit" class="sub-button is-info mt-2 ml-1">
                                         Add City
                                     </button>
                                 </div>

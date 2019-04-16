@@ -18,8 +18,10 @@
 			    <h4 class="article-content"><small class="text-muted">Model &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </small>{{ object.model_name }}</h4>
 				<h6 class="article-content"><small class="text-muted">Launching Year &nbsp;&nbsp; : </small>{{ object.launched_date }}</h6>
 				<br><br>
-				<span>Delete Post:</span>
-				<button type="button" class="btn btn-outline-danger btn-del" data-toggle="modal" data-target="#myModal">Delete</button>
+				<!-- <span>Delete:</span> -->
+				<button type="button" class="btn btn-outline-danger btn-del" data-toggle="modal" data-target="#myModal">Delete Post</button>
+				<!-- <span>Update:</span> -->
+				<a href="{% url 'car_update' object.pk %}"><button type="button" class="btn btn-outline-success btn-lg">Update Post</button></a>
 			  </div>
 			  <br>
 			</article>

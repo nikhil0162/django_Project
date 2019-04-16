@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from django.contrib.auth.models import User
 
 
 def register(request):
@@ -39,3 +41,9 @@ def profile(request):
         'p_form': p_form
     }
     return render(request, 'user/profile.html', context)
+
+
+class ProfileInfo(ListView):
+    template_name = 'user/profile_info.html'
+    model = User
+    context_object_name = 'infos'
