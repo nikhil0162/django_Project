@@ -1,4 +1,3 @@
-import requests
 from django.shortcuts import render
 from .models import City
 from .forms import CityForm
