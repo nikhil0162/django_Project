@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+	<div class="separate-pages">
+
+    	<div class="container">
+        	<div class="row">
+            	<div class="col-md-3">
+                </div>
+                <div class="col-md-6 regiform">
+					<section class="media-section">
+						<div class="img-cover">
+								<img class="account-img" src="{{ user.profile.image.url }}" alt="">
+						</div>
+
+						<div class="media-part">
+							<h2>{{ user.username }}</h2>
+							<h5 style="word-wrap:break-word;">{{ user.email }}</h5>
+                            <span><a href="{% url 'profile' %}" class="btn btn-outline-danger btn-sm">Edit Profile</a></span>
+							<hr>
+						</div>
+					</section>
+                    <h1>hello</h1>
+				</div>
+        		<div class="col-md-3">
+        		</div>
+        	 </div><!-- row -->
+             {% for info in infos %}
+                <!-- <img src="{{ info.image }}" alt="" style="height:200px; width:150px;"> -->
+                <!-- <img src="{{ info.image }}" alt="" style="height:200px; width:150px;"> -->
+                <!-- <img src="{{ info.image }}" alt="" style="height:200px; width:150px;"> -->
+             {% endfor %}
+            </div><!--container -->
+	</div>
+{% endblock content %}
