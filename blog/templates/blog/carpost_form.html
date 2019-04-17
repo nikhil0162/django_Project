@@ -8,7 +8,7 @@
 {% bootstrap_javascript jquery='full' %}
 
 	<div class="separate-pages">
-		<div class="container"> 
+		<div class="container">
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3">
 				</div>
@@ -25,46 +25,48 @@
 							{{ form.company_name }}
 							<!-- {% endautoescape %} -->
 						</div>
-	
+
 						<div class="form-group">
 							<label for="model_name">Model Name*</label>
 							{{ form.model_name }}
 
-						</div>					
+						</div>
 						<div class="form-group">
 							<label for="car_upload">Upload Image</label>
-								
+
 							{{ form.image }}
 
-						</div>					
+						</div>
 						<div class="form-group">
-							
+
 							<label for="launch_date">Launch Date</label>
 						{{ form.launched_date }}
-						</div>					
+						</div>
 						<div class="form-group">
-							
+
 							<label for="gender">Gender</label><br>
 							{{ form.gender }}
 						</div>
 						<div class="form-group">
-							
+
 							<label for="description">Description</label><br>
 							{{ form.description }}
 						</div>
 						<div class="form-group">
-							
+
 							<label for="company_contact_no">Company Contact NO.</label><br>
 							{{ form.company_contact_no }}
-						</div>					
 						</div>
-						
+						</div>
+
 						<button type="submit" class="sub-button">Submit</button>
 					</form>
 				</div><!-- col -->
-				<div class="col-xs-3 col-sm-3 col-md-3"> 		
+				<div class="col-xs-3 col-sm-3 col-md-3">
 				</div><!-- col -->
 			</div><!-- row -->
-		</div><!-- container --> 
+		</div><!-- container -->
 	</div><!-- separate-pages -->
+
+	<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
 {% endblock content %}

@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 # from django.conf.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from  tracking_analyzer.models import Tracker
+# from  tracking_analyzer.models import Tracker
 
 
 
@@ -42,7 +42,7 @@ class CarPostDetailView(DetailView):
 
 	def get_object(self, queryset=None):
 		obj = super(CarPostDetailView, self).get_object(queryset)
-		Tracker.objects.create_from_request(self.request, obj)
+		# Tracker.objects.create_from_request(self.request, obj)
 		return obj
 
 # import bleach
@@ -96,7 +96,7 @@ class CarPostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		return self.request.user == post.posted_by
 
 
- 
+
 
 
 def search(request):

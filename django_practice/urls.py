@@ -32,14 +32,11 @@ urlpatterns = [
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='user/password_reset.html'), name='password_reset'),
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='user/password_reset_done.html'), name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='user/password_reset_confirm.html'), name='password_reset_confirm'),
-    path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='user/password_reset_complete.html'), name='password_reset_complete'),
-    path('profile_info/', user_views.ProfileInfo.as_view(), name='profile_info'),
     path('', include('blog.urls')),
     path('weather/', include('weather.urls')),
     path('todo/', include('todo.urls')),
-    path('blog_api/', include('blog.api.urls', namespace="blog-api")),
-    path('schedular/', include('schedular.urls', namespace="schedular-app")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('epiclicks/', include('epiclicks.urls')),
 ]
 
 if settings.DEBUG:
