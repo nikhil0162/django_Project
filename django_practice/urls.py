@@ -35,7 +35,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('weather/', include('weather.urls')),
     path('todo/', include('todo.urls')),
-    path('epiclicks/', include('epiclicks.urls', namespace='epiclicks'))
+    path('epiclicks/', include('epiclicks.urls')),
 ]
 
 if settings.DEBUG:
