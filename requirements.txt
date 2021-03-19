@@ -18,7 +18,7 @@ django-crispy-forms==1.7.2
 django-datetimepicker==3.14
 django-filter==2.0.0
 django-mysql==2.4.1
-djangorestframework==3.9.0
+djangorestframework==3.11.2
 djangorestframework-simplejwt==3.3
 env==0.1.0
 flake8==3.5.0
