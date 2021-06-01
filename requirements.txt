@@ -67,7 +67,7 @@ scipy==1.1.0
 six==1.11.0
 SQLAlchemy==1.2.10
 UniCurses==1.2
-urllib3==1.23
+urllib3==1.26.5
 urlopen==1.0.0
 virtualenv==16.1.0
 virtualenvwrapper-win==1.2.5
